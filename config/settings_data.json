@@ -4606,6 +4606,27 @@
       "product-has-options2-template": {
         "type": "product-has-options2-template",
         "blocks": {
+          "fca37925-33b1-410e-bd3d-f7949f2360d8": {
+            "type": "image_with_text",
+            "settings": {
+              "layout": false,
+              "frontpage_text_align": "left",
+              "frontpage_image_position": "right",
+              "image": "shopify:\/\/shop_images\/parker-and-coop-garden-panel-post-corten-steel.png",
+              "image_crop": "center",
+              "title": "Purchase Posts with Panels",
+              "text": "<p>Combine and fasten together multiple panels to each other with this sturdy Post. A single Panel requires 2 posts. It will be \"invisible\" once fastened to the panels.<\/p>",
+              "link": "https:\/\/parkerandcoop.com\/products\/corten-garden-panel-post",
+              "button_label": "Add Posts"
+            }
+          },
+          "product-has-options2-template-1": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 0,
+              "divider_border": false
+            }
+          },
           "product-has-options2-template-0": {
             "type": "rich_text_and_image",
             "disabled": true,
@@ -4616,13 +4637,6 @@
               "text_alignment": "center",
               "button_label": "Button",
               "button_link": ""
-            }
-          },
-          "product-has-options2-template-1": {
-            "type": "divider",
-            "settings": {
-              "divider_spacing": 0,
-              "divider_border": false
             }
           },
           "product-has-options2-template-2": {
@@ -4718,26 +4732,13 @@
               "contact_text_alignment": "left"
             }
           },
-          "fca37925-33b1-410e-bd3d-f7949f2360d8": {
-            "type": "image_with_text",
-            "settings": {
-              "layout": false,
-              "frontpage_text_align": "left",
-              "frontpage_image_position": "right",
-              "image": "shopify:\/\/shop_images\/parker-and-coop-garden-panel-post-corten-steel.png",
-              "image_crop": "center",
-              "title": "Purchase Posts with Panels",
-              "text": "<p>Combine and fasten together multiple panels to each other with this sturdy Post. A single Panel requires 2 posts. It will be \"invisible\" once fastened to the panels.<\/p>",
-              "link": "https:\/\/parkerandcoop.com\/products\/corten-garden-panel-post",
-              "button_label": "Add Posts"
-            }
-          },
           "8158eb77-a417-45f9-8298-1d44d7e601d6": {
             "type": "image_with_text_overlay",
             "settings": {
               "wide_display": true,
-              "pretext": "<p>This is<\/p>",
-              "title": "Your headline",
+              "image": "shopify:\/\/shop_images\/AS_FEATYRED_IN_P_ARKER_AND_COOP.png",
+              "pretext": "",
+              "title": "",
               "subtitle": "<p>Customize this section<\/p>",
               "caption_background": false,
               "caption_background_transparency": false,
@@ -4753,8 +4754,9 @@
           }
         },
         "block_order": [
-          "product-has-options2-template-0",
+          "fca37925-33b1-410e-bd3d-f7949f2360d8",
           "product-has-options2-template-1",
+          "product-has-options2-template-0",
           "product-has-options2-template-2",
           "product-has-options2-template-3",
           "product-has-options2-template-4",
@@ -4762,7 +4764,6 @@
           "product-has-options2-template-6",
           "product-has-options2-template-7",
           "product-has-options2-template-8",
-          "fca37925-33b1-410e-bd3d-f7949f2360d8",
           "8158eb77-a417-45f9-8298-1d44d7e601d6"
         ],
         "settings": {
