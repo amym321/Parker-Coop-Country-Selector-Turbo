@@ -4623,8 +4623,8 @@
           "product-has-options2-template-1": {
             "type": "divider",
             "settings": {
-              "divider_spacing": 0,
-              "divider_border": false
+              "divider_spacing": 30,
+              "divider_border": true
             }
           },
           "8158eb77-a417-45f9-8298-1d44d7e601d6": {
