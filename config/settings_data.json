@@ -4662,100 +4662,6 @@
             "settings": {
               "custom_html": "<div id=\"insta-feed\"><\/div>"
             }
-          },
-          "product-has-options2-template-0": {
-            "type": "rich_text_and_image",
-            "disabled": true,
-            "settings": {
-              "title": "This is an example headline",
-              "content": "<p>Vestibulum fringilla pede sit amet augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer tincidunt. Vestibulum turpis sem, aliquet eget, lobortis pellentesque, rutrum eu, nisl. Suspendisse potenti.<\/p>",
-              "text_size": "featured_text",
-              "text_alignment": "center",
-              "button_label": "Button",
-              "button_link": ""
-            }
-          },
-          "product-has-options2-template-2": {
-            "type": "image_gallery",
-            "disabled": true,
-            "settings": {
-            }
-          },
-          "product-has-options2-template-3": {
-            "type": "divider",
-            "disabled": true,
-            "settings": {
-              "divider_spacing": 20,
-              "divider_border": false
-            }
-          },
-          "product-has-options2-template-4": {
-            "type": "image_with_text_overlay",
-            "disabled": true,
-            "settings": {
-              "wide_display": true,
-              "pretext": "<p>This is<\/p>",
-              "title": "Your Headline",
-              "subtitle": "<p>Customize this section<\/p>",
-              "caption_background": false,
-              "caption_background_transparency": false,
-              "text_position": "left",
-              "text_align": "left",
-              "button1": "Button",
-              "button1_link": "",
-              "button1_highlight": false,
-              "button2": "",
-              "button2_link": "",
-              "button2_highlight": false
-            }
-          },
-          "product-has-options2-template-5": {
-            "type": "image_with_text",
-            "disabled": true,
-            "settings": {
-              "layout": false,
-              "frontpage_text_align": "left",
-              "frontpage_image_position": "left",
-              "image_crop": "none",
-              "title": "Headline",
-              "text": "<p>Vestibulum fringilla pede sit amet augue. Pellentesque habitant morbi tristique senecrutrum eu, nisl.<\/p>",
-              "link": "",
-              "button_label": "Button"
-            }
-          },
-          "product-has-options2-template-6": {
-            "type": "image_with_text",
-            "disabled": true,
-            "settings": {
-              "layout": false,
-              "frontpage_text_align": "left",
-              "frontpage_image_position": "left",
-              "image_crop": "none",
-              "title": "Headline",
-              "text": "<p>Vestibulum fringilla pede sit amet augue. Pellentesque habitant morbi tristique senecrutrum eu, nisl.<\/p>",
-              "link": "",
-              "button_label": "Button"
-            }
-          },
-          "product-has-options2-template-7": {
-            "type": "image_with_text_overlay",
-            "disabled": true,
-            "settings": {
-              "wide_display": true,
-              "pretext": "<p>This is<\/p>",
-              "title": "Your Headline",
-              "subtitle": "<p>Customize this section<\/p>",
-              "caption_background": false,
-              "caption_background_transparency": false,
-              "text_position": "right",
-              "text_align": "left",
-              "button1": "Button",
-              "button1_link": "",
-              "button1_highlight": false,
-              "button2": "",
-              "button2_link": "",
-              "button2_highlight": false
-            }
           }
         },
         "block_order": [
@@ -4763,14 +4669,7 @@
           "product-has-options2-template-1",
           "8158eb77-a417-45f9-8298-1d44d7e601d6",
           "product-has-options2-template-8",
-          "773d97d1-fc4b-472f-86a8-5d0c13a4058f",
-          "product-has-options2-template-0",
-          "product-has-options2-template-2",
-          "product-has-options2-template-3",
-          "product-has-options2-template-4",
-          "product-has-options2-template-5",
-          "product-has-options2-template-6",
-          "product-has-options2-template-7"
+          "773d97d1-fc4b-472f-86a8-5d0c13a4058f"
         ],
         "settings": {
           "product_breadcrumb": false,
