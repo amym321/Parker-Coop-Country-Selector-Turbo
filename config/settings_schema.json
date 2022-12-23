@@ -1297,13 +1297,13 @@
         "type": "checkbox",
         "id": "notify_me_form",
         "label": "Enable \"Back in stock request\" form",
-        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/115013035567-How-does-the-back-in-stock-notification-form-work-)"
+        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115013035567-How-does-the-back-in-stock-notification-form-work-)"
       },
       {
         "type": "richtext",
         "id": "notify_me_richtext",
         "label": "\"Back in stock request\" form text",
-        "default": "<p>Notify me when this product is available:</p>"
+        "default": "<p>Notify me when this product is available:<\/p>"
       },
       {
         "type": "radio",
@@ -1627,7 +1627,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "If native multi-currencies is configured on your store, the theme currency converter will be disabled. [Learn more](https://help.shopify.com/en/manual/payments/shopify-payments/multi-currency/setup)"
+        "content": "If native multi-currencies is configured on your store, the theme currency converter will be disabled. [Learn more](https:\/\/help.shopify.com\/en\/manual\/payments\/shopify-payments\/multi-currency\/setup)"
       },
       {
         "type": "checkbox",
@@ -1747,7 +1747,7 @@
         "id": "image_crop",
         "label": "Image cropping",
         "default": "none",
-        "info": "Only applied when image is larger/wider than recommended",
+        "info": "Only applied when image is larger\/wider than recommended",
         "options": [
           {
             "value": "left",
@@ -1966,7 +1966,7 @@
         "type": "image_picker",
         "id": "og_image_fallback",
         "label": "Social sharing image",
-        "info": "Used when an image cannot be found. [Learn more](https://help.outofthesandbox.com/hc/en-us/articles/115006910147-Specify-what-image-text-is-shown-when-someone-shares-your-site-on-Facebook-#section5)"
+        "info": "Used when an image cannot be found. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115006910147-Specify-what-image-text-is-shown-when-someone-shares-your-site-on-Facebook-#section5)"
       }
     ]
   },
