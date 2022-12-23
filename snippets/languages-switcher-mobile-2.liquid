@@ -1,0 +1,217 @@
+{% comment %} mobile language switcher - am {% endcomment %}
+<noscript>
+  {%- form 'localization',  class: 'localization-form2' -%}
+    <div class="localization-form__select">
+      <select class="localization-selector link" name="locale_code" aria-labelledby="FooterLanguageLabelNoScript">
+        {%- for language in localization.available_languages -%}
+          <option value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {%- if language.iso_code == localization.language.iso_code %} selected{% endif %}>
+            {{ language.endonym_name | capitalize }}
+          </option>
+        {%- endfor -%}
+      </select>
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+      </svg>
+    </div>
+    <button class="button button--tertiary">English</button>
+  {%- endform -%}
+</noscript>
+
+<localization-form2>
+  {%- form 'localization', class: 'localization-form2' -%}
+    <div class="no-js-hidden">
+      <div class="disclosure">
+        <language type="button" class="language-mobile2 disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" >
+          {{ localization.language.endonym_name | capitalize }}
+          <svg viewBox="0 0 100 100" class="language-icon">
+            <path d="M 10,50 L 60,100 L 62,90 L 22,50  L 62,10 L 60,0 Z" class="arrow " transform="translate(100, 100) rotate(180) ">
+            </path>
+          </svg>
+        </language>
+        <div class="disclosure__list-wrapper-2"   hidden  >
+          <ul  role="list" class="disclosure__list list-unstyled">
+            {%- for language in localization.available_languages -%}
+              <li class="disclosure__item" tabindex="-1">
+                <a class="link link--text disclosure__link caption-large{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} data-value="{{ language.iso_code }}">
+                  {{ language.endonym_name | capitalize }}
+                </a>
+              </li>
+              <br>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+      <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+    </div>
+  {%- endform -%}
+</localization-form2>
+
+<script>
+  class LocalizationForm2 extends HTMLElement {
+    constructor() {
+      super();
+      this.elements = {
+        input: this.querySelector('input[name="locale_code"]'),
+        button: this.querySelector('.language-mobile2'),
+        panel: this.querySelector('.disclosure__list-wrapper-2'),
+      };
+
+      this.elements.button.addEventListener('click', this.openSelector.bind(this));
+      this.elements.button.addEventListener('focusout', this.closeSelector.bind(this));
+      this.addEventListener('keyup', this.onContainerKeyUp.bind(this));
+      this.querySelectorAll('a').forEach(item => item.addEventListener('click', this.onItemClick.bind(this)));
+    }
+
+    hidePanel() {
+      this.elements.button.setAttribute('aria-expanded', 'false');
+      this.elements.panel.setAttribute('hidden', true);
+    }
+
+    onContainerKeyUp(event) {
+      if (event.code.toUpperCase() !== 'ESCAPE') return;
+      this.hidePanel();
+      this.elements.button.focus();
+    }
+
+    onItemClick(event) {
+      event.preventDefault();
+      //const formDesktop = this.querySelector('form');
+      const formM = this.querySelector('.localization-form2'); //
+      this.elements.input.value = event.currentTarget.dataset.value; //fr
+      if (formM) formM.submit();
+    }
+
+    openSelector() {
+      this.elements.button.focus();
+      this.elements.panel.toggleAttribute('hidden');
+      this.elements.button.setAttribute('aria-expanded', (this.elements.button.getAttribute('aria-expanded') === 'false').toString());
+    }
+
+    closeSelector(event) {
+      const shouldClose = event.relatedTarget && event.relatedTarget.nodeName === 'BUTTON';
+      if (event.relatedTarget === null || shouldClose) {
+        this.hidePanel();
+      }
+    }
+  }
+
+  customElements.define('localization-form2', LocalizationForm2);  // name, constructor
+</script>
+
+
+<style>
+  .localization-form__select .icon-caret {
+    position: relative;
+    content: "";
+    height: 9px;
+    left: 10px;
+    top: 40%;
+    color:rgba(0, 0, 0, 0.684);
+  }
+
+.localization-form,
+.localization-form2 {
+  margin-bottom:0px;
+}
+
+.disclosure__list-wrapper,
+.disclosure__list-wrapper-2 {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e6e6e6;
+  overflow: hidden;
+  position: absolute;
+  z-index: 2;
+  background-color: #e6e6e6;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.619);
+  transform: translatey(5px);
+  border: solid 0.25px rgb(0 0 0 / 62%);
+}
+
+@media only screen and (max-width: 798px) {
+.disclosure__list-wrapper-2 {
+  background-color: #fff;
+  }
+}
+
+.disclosure__list {
+  position: relative;
+  overflow-y: auto;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  scroll-padding: 0.5rem 0;
+  min-height: 8.2rem;
+  max-height: 19rem;
+  min-width: 120px;
+  width: max-content;
+  margin: 0 0 10px 0;
+  padding-left:25px;
+}
+
+@media only screen and (max-width: 798px) {
+  .disclosure__list {
+    min-width: 200px;
+  }
+}
+
+@media only screen and (min-width: 799px) {
+  .disclosure {
+    width: 85px;
+  }
+}
+@media only screen and (max-width: 798px) {
+  .disclosure {
+    width: 100%;
+    padding-top: 8px;
+  }
+}
+
+language, 
+language-m {
+  font-size: 13px !important;
+  font-weight:bold !important;
+  letter-spacing: 1px !important;
+}
+@media only screen and (max-width: 798px) {
+  language-m {
+    justify-content: space-between;
+      width: 100%;
+      display: flex;
+  }
+}
+
+.language-icon {
+  height: 12px;
+  transform: rotate(90deg);
+  position: relative;
+}
+@media only screen and (min-width: 799px) {
+  .language-icon {
+    left: 10px;
+  }
+}@media only screen and (max-width: 798px) {
+  .language-icon {
+    right: 17px;
+    position: absolute;
+    transform: rotate(90deg) translatex(10px);
+  }
+}
+
+.disclosure__link {
+  line-height: unset !important;
+  font-size: 13px !important;
+  letter-spacing: 1px !important;
+}
+@media only screen and (max-width: 798px) {
+  .disclosure__link {
+    height: 5px;
+    padding-bottom:0px !important;
+    padding-top:0px !important;
+  }
+}
+@media only screen and (min-width: 799px) {
+  .disclosure__link {
+    height: auto ;
+  }
+}
+</style>

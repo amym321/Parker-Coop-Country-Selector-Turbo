@@ -1,24 +1,120 @@
-{% if shop.enabled_currencies.size > 1 %}
-  {% form 'currency' %}
-    <select class="currencies" name="currency" id="currency-convertor" data-native-currency-converter>
-      {% for currency in shop.enabled_currencies %}
-        {% if currency == cart.currency %}
-          <option selected="true">{{currency.iso_code}}</option>
-          {% else %}
-          <option>{{currency.iso_code}}</option>
-        {% endif %}
-      {% endfor %}
-    </select>
-  {% endform %}
-{% else %}
+{% comment %} currencies switcher for specific coutries - am {% endcomment %}
   <select class="currencies" name="currencies" data-default-shop-currency="{{ shop.currency }}" data-currency-converter>
-    {% capture codes %},USD,EUR,GBP,CAD,ARS,AUD,ILS,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,TND,UAH,AED,UYU,VEB,VND,ZMK,{% endcapture %}
-    {% assign supported_codes = settings.supported_currencies | split: ' ' %}
-    <option value="{{ shop.currency }}" selected="selected">{{ shop.currency }}</option>
+
+    {% capture codes %},AUT,BEL,BGR,HRV,CYP,CZE,DNK,EST,FIN,FRA,DEU,GRC,HUN,IRE,ITA,LVA,LTU,LUX,MLT,NLD,NOR,POL,PRT,ROU,SVK,SVN,ESP,SWE,{% endcapture %}
+    {% assign supported_codes = 'AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRE ITA LVA LTU LUX MLT NLD NOR POL PRT ROU SVK SVN ESP SWE' | split: ' ' %}
+
+    <option value="{{ shop.currency }}" selected="selected"><b>United Kingdom ({{ shop.currency }} £)</b></option>
     {% for code in supported_codes %}
+
+    {% comment %} option titles more detailed than just currency code - am {% endcomment %}
+      {% if code contains 'AUT' %}
+        {% assign country_name = 'Austria (EUR 	€)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'BEL' %}
+        {% assign country_name = 'Belgium (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'BGR' %}
+        {% assign country_name = 'Bulgaria (BGN лв.)' %}
+        {% assign country_currency = 'BGN' %}
+      {% elsif code contains 'HRV' %}
+        {% assign country_name = 'Croatia (HRK kn.)' %}
+        {% assign country_currency = 'HRK' %}
+      {% elsif code contains 'CYP' %}
+        {% assign country_name = 'Cyprus (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {%  elsif code contains 'CZE'  %}
+        {% assign country_name = 'Czech Republic (CZK Kč)' %}
+        {% assign country_currency = 'CZK' %}
+      {% elsif code contains 'DNK' %}
+        {% assign country_name = 'Denmark (DKK kr.)' %}
+        {% assign country_currency = 'DKK' %}
+      {% elsif code contains 'EST' %}
+        {% assign country_name = 'Estonia (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'FIN' %}
+        {% assign country_name = 'Finland (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'FRA' %}
+        {% assign country_name = 'France (EUR	€)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'DEU' %}
+        {% assign country_name = 'Germany (EUR	€)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'GRC' %}
+        {% assign country_name = 'Greece (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'HUN' %}
+        {% assign country_name = 'Hungary (HUF Ft.)' %}
+        {% assign country_currency = 'HUF' %}
+      {% elsif code contains 'IRE' %}
+        {% assign country_name = 'Ireland (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'ITA' %}
+        {% assign country_name = 'Italy (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'LVA' %}
+        {% assign country_name = 'Latvia (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'LTU' %}
+        {% assign country_name = 'Lithuania (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'LUX' %}
+        {% assign country_name = 'Luxembourg (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'MLT' %}
+        {% assign country_name = 'Malta (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'NLD' %}
+        {% assign country_name = 'Netherlands (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'NOR' %}
+        {% assign country_name = 'Norway (NOK	kr.)' %}
+        {% assign country_currency = 'NOK' %}
+      {% elsif code contains 'POL' %}
+        {% assign country_name = 'Poland (PLN zł.)' %}
+        {% assign country_currency = 'PLN' %}
+      {% elsif code contains 'PRT' %}
+        {% assign country_name = 'Portugal (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'ROU' %}
+        {% assign country_name = 'Romania (RON lei)' %}
+        {% assign country_currency = 'RON' %}
+      {% elsif code contains 'SVK' %}
+        {% assign country_name = 'Slovakia (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'SVN' %}
+        {% assign country_name = 'Slovenia (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% elsif code contains 'ESP' %}
+        {% assign country_name = 'Spain (EUR €)' %}
+        {% assign country_currency = 'EUR' %}
+      {% else code contains 'SWE' %}
+        {% assign country_name = 'Sweden (SEK kr.)' %}
+        {% assign country_currency = 'SEK' %}
+      {% endif %}
+
       {% if code != shop.currency and codes contains code %}
-      <option value="{{ code }}">{{ code }}</option>
+        <option value="{{ country_currency }}" class="coutry-option">{{ country_name }}</option>
       {% endif %}
     {% endfor %}
   </select>
-{% endif %}
+
+
+<style>
+select.currencies {
+  min-width: 185px;
+}
+.currencies {
+  font-weight: bold !important;
+}
+select.currencies option {
+  background-color: #e6e6e6;
+}
+
+@media only screen and (max-width: 798px) {
+  select.currencies {
+    font-size: 13px;
+  }
+}
+</style>

@@ -3438,6 +3438,7 @@
     "cart_message": "",
     "show_shipping_calculator": true,
     "shipping_calculator_default_country": "United Kingdom",
+    "show_multiple_languages": true,
     "show_multiple_currencies": true,
     "currency_format": "money_format",
     "supported_currencies": "GBP",

@@ -127,6 +127,11 @@
             {% include 'currencies-switcher' %}
           </li>
         {% endif %}
+        {% if settings.show_multiple_languages %}
+          <li>
+            {% include 'languages-switcher-mobile-2' %}
+          </li>
+        {% endif %}
       </ul>
     </div>
   </div>
@@ -332,6 +337,12 @@
             {% include 'currencies-switcher' %}
           </li>
         {% endif %}
+        {% if settings.show_multiple_languages %}
+          <li>
+           {% include 'languages-switcher' %}
+          </li>
+        {% endif %}
+
         {% if shop.customer_accounts_enabled %}
           <li>
             <a href="/account" class="icon-user" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span></a>

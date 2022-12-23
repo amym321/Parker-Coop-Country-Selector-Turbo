@@ -1,0 +1,101 @@
+{% comment %} desktop language switcher - am {% endcomment %}
+<noscript>
+  {%- form 'localization',  class: 'localization-form' -%}
+    <div class="localization-form__select">
+      <select class="localization-selector link" name="locale_code" aria-labelledby="FooterLanguageLabelNoScript">
+        {%- for language in localization.available_languages -%}
+          <option value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {%- if language.iso_code == localization.language.iso_code %} selected{% endif %}>
+            {{ language.endonym_name | capitalize }}
+          </option>
+        {%- endfor -%}
+      </select>
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+      </svg>
+    </div>
+    <button class="button button--tertiary">English</button>
+  {%- endform -%}
+</noscript>
+
+<localization-form>
+  {%- form 'localization', class: 'localization-form' -%} 
+    <div class="no-js-hidden">
+      <div class="disclosure">
+        <language type="button" class="disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" >
+          {{ localization.language.endonym_name | capitalize }}
+          <svg viewBox="0 0 100 100" class="language-icon">
+            <path d="M 10,50 L 60,100 L 62,90 L 22,50  L 62,10 L 60,0 Z" class="arrow " transform="translate(100, 100) rotate(180) ">
+            </path>
+          </svg>
+        </language>
+        <div class="disclosure__list-wrapper"   hidden  >
+          <ul  role="list" class="disclosure__list list-unstyled">
+            {%- for language in localization.available_languages -%}
+              <li class="disclosure__item" tabindex="-1">
+                <a class="link link--text disclosure__link caption-large{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} data-value="{{ language.iso_code }}">
+                  {{ language.endonym_name | capitalize }}
+                </a>
+              </li>
+              <br>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+      <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+    </div>
+  {%- endform -%}
+</localization-form>
+
+<script>
+  class LocalizationForm extends HTMLElement {
+    constructor() {
+      super();
+      this.elements = {
+        input: this.querySelector('input[name="locale_code"]'),
+        button: this.querySelector('language'),
+        panel: this.querySelector('.disclosure__list-wrapper'),
+      };
+
+      this.elements.button.addEventListener('click', this.openSelector.bind(this));
+      this.elements.button.addEventListener('focusout', this.closeSelector.bind(this));
+      this.addEventListener('keyup', this.onContainerKeyUp.bind(this));
+      this.querySelectorAll('a').forEach(item => item.addEventListener('click', this.onItemClick.bind(this)));
+    }
+
+    hidePanel() {
+      this.elements.button.setAttribute('aria-expanded', 'false');
+      this.elements.panel.setAttribute('hidden', true);
+    }
+
+    onContainerKeyUp(event) {
+      if (event.code.toUpperCase() !== 'ESCAPE') return;
+      this.hidePanel();
+      this.elements.button.focus();
+    }
+
+    onItemClick(event) {
+      event.preventDefault();
+      //const formDesktop = this.querySelector('form');
+      const formDesktop = this.querySelector('.localization-form'); //works!!
+      this.elements.input.value = event.currentTarget.dataset.value; //fr
+      if (formDesktop) formDesktop.submit();
+    }
+
+    openSelector() {
+      this.elements.button.focus();
+      this.elements.panel.toggleAttribute('hidden');
+      this.elements.button.setAttribute('aria-expanded', (this.elements.button.getAttribute('aria-expanded') === 'false').toString());
+    }
+
+    closeSelector(event) {
+      const shouldClose = event.relatedTarget && event.relatedTarget.nodeName === 'BUTTON';
+      if (event.relatedTarget === null || shouldClose) {
+        this.hidePanel();
+      }
+    }
+  }
+
+  customElements.define('localization-form', LocalizationForm);
+</script>
+
+{% comment %} styles are stated on languages-switcher-mobile file {% endcomment %}

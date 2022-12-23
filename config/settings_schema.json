@@ -1631,6 +1631,12 @@
       },
       {
         "type": "checkbox",
+        "id": "show_multiple_languages",
+        "label": "Enable language conversion",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "show_multiple_currencies",
         "label": "Enable currency conversion",
         "default": false,

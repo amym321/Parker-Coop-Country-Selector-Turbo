@@ -1,17 +1,4 @@
-{% if shop.enabled_currencies.size > 1 %}
-  <script type="text/javascript">
-    //Select event for native multi currency checkout
-    $('.shopify-currency-form [data-native-currency-converter]').on('change', function () {
-      $(this)
-        .parents('form')
-        .submit();
-    });
 
-    function convertCurrencies() {
-      return false;
-    }
-  </script>
-{% else %}
   <script type="text/javascript" src="/services/javascripts/currencies.js" data-no-instant></script>
   <script type="text/javascript" src="{{ "jquery.currencies.min.js" | asset_url }}" data-no-instant></script>
 
@@ -93,4 +80,3 @@
       }
     }
 </script>
-{% endif %}
