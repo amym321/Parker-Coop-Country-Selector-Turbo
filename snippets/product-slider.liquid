@@ -38,6 +38,9 @@
       data-products-available="{{ products_length }}">
   {% for product in products limit: loop_limit %}
 
+  {% comment %} hide certain products when outside UK - am {% endcomment %}
+  {% unless product.tags contains 'show_uk_only' and localization.country.iso_code != "GB"%}
+
     {% if product.id != skip_product.id %}
       {% assign feature_image = product.featured_image %}
       <div class="gallery-cell
@@ -85,5 +88,8 @@
         {% endif %}
       </div>
     {% endif %}
+
+  {% endunless %}
+
   {% endfor %}
 </div>

@@ -29,6 +29,9 @@
   }
 </script>
 
+          <script type="text/javascript">
+              console.log('log 40) test');
+          </script>
 
 {% for product in products limit: limit %}
   {% if product.id == skip_product.id  %}
@@ -38,7 +41,10 @@
 
 <div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} clearfix equal-columns--clear equal-columns--outside-trim">
   {% for product in products limit: limit %}
-    {% include 'product-thumbnail', sidebar: sidebar %}
+      {% comment %} hide certain products when outside UK - am {% endcomment %}
+      {% unless product.tags contains 'show_uk_only' and localization.country.iso_code != "GB"%}
+        {% include 'product-thumbnail', sidebar: sidebar %}
+      {% endunless %}
   {% endfor %}
   {% if template contains 'collection' %}
     {% if settings.pagination_type == 'load_more' or settings.pagination_type == 'infinite_scroll' %}
@@ -71,3 +77,4 @@
   {% endif %}
 </div>
 <div class="load-more__icon"></div>
+
