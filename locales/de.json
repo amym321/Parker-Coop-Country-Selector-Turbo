@@ -85,7 +85,8 @@
       "next_article_html": "Nächster →",
       "tags": "Kategorie",
       "author": "Autor",
-      "comment_meta_html": "<strong>{{ author }}<\/strong> am <strong><time datetime=\"{{ date }}\">{{ date }}<\/time><\/strong>"
+      "comment_meta_html": "<strong>{{ author }}<\/strong> am <strong><time datetime=\"{{ date }}\">{{ date }}<\/time><\/strong>",
+      "read_time": "Minute gelesen"
     },
     "counts": {
       "comments_with_count": {
@@ -362,7 +363,8 @@
       "subtotal": "Zwischensumme",
       "discount": "Rabatt",
       "update": "Aktualisierte Zwischensumme",
-      "checkout": "Kasse"
+      "checkout": "Kasse",
+      "maximum_quantity": "Maximale Menge"
     },
     "shipping_calculator": {
       "estimated_shipping": "Geschätzter Versand",
