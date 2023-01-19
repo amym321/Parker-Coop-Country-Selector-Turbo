@@ -112,7 +112,7 @@
   },
   "collections": {
     "general": {
-      "title": "Collections",
+      "title": "Collections de Produits",
       "no_matches": "Aucun produit n'a été trouvé dans cette collection",
       "link_title": "Parcourir {{ title }}",
       "all_collection_title": "Tout {{ title }}",
