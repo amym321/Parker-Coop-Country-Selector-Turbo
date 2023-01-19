@@ -135,7 +135,7 @@
     "sorting": {
       "title": "Classer par",
       "sort_collection": "Classer {{ title }}",
-      "filter": "Filter by",
+      "filter": "Filtrer par",
       "filter_collection": "Filtrer {{ title }}",
       "featured": "Coups de cœur",
       "best_selling": "Meilleurs ventes",
