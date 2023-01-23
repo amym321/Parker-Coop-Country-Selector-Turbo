@@ -642,6 +642,16 @@ var searchAutocomplete = {
                     collectionHandles.push(item.collections[i].handle);
                   }
 
+                  // don't include  certain products in search results based on currency - am 
+                  var collectionsHide = collectionHandles.includes('hide-uk');
+                  var collectionsOnlyUk = collectionHandles.includes('show-uk-only');
+                  if (collectionsOnlyUk === true && Currency.currentCurrency !== "GBP") {
+                    return;
+                  }
+                  if (collectionsHide === true && Currency.currentCurrency === "GBP") {
+                    return;
+                  }
+
                   if($.inArray('coming-soon', collectionHandles) != -1) {
                     var itemPrice = {{ 'collections.general.coming_soon' | t | json }};
                   } else {
@@ -685,7 +695,7 @@ var searchAutocomplete = {
               // The Ajax request will return at the most 5 results.
               // If there are more than 5, let's link to the search results page.
               if(data.results_count >= {{ settings.search_to_display }}) {
-                resultsList.append('<li class="all-results"><span class="title see-all"><a href="' + searchURL + '*">' + {{ 'general.search.all_results' | t | json }} + ' (' + data.results_count + ')</a></span></li>');
+                resultsList.append('<li class="all-results"><span class="title see-all"><a href="' + searchURL + '*">' + {{ 'general.search.all_results' | t | json }} + ' </a></span></li>');
               }
               resultsList.fadeIn(200);
             }
