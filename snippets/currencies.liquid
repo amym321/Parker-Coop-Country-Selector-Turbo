@@ -63,7 +63,51 @@
       var newCurrency = $(this).val();
       Currency.convertAll(Currency.currentCurrency, newCurrency);
       $('.selected-currency').text(Currency.currentCurrency);
+
+      // on currency change, show/hide products based on currency -am
+      var productThumbs = document.querySelectorAll("#product-thumbnail"), i;
+      console.log('log 18) productThumbs.length = '+ productThumbs.length);
+
+      for (i = 0; i < productThumbs.length; ++i) {
+        var thumbShowHide = productThumbs[i].dataset.showHide;
+
+        if (Currency.currentCurrency !== "GBP") {
+          if (thumbShowHide === "show-uk-only") {
+            productThumbs[i].classList.add('hide');
+          } else {
+            productThumbs[i].classList.remove('hide');
+          }
+        } else {
+          if (thumbShowHide === "hide-uk") {
+            productThumbs[i].classList.add('hide');
+          } else {
+            productThumbs[i].classList.remove('hide');
+          }
+        }
+      }
     });
+
+    // on page load, show/hide products based on currency -am
+    var productThumbs = document.querySelectorAll("#product-thumbnail"), i;
+    console.log('log 11) productThumbs.length = '+ productThumbs.length);
+
+    for (i = 0; i < productThumbs.length; ++i) {
+      var thumbShowHide = productThumbs[i].dataset.showHide;
+
+      if (Currency.currentCurrency !== "GBP") {
+        if (thumbShowHide === "show-uk-only") {
+          productThumbs[i].classList.add('hide');
+        } else {
+          productThumbs[i].classList.remove('hide');
+        }
+      } else {
+        if (thumbShowHide === "hide-uk") {
+          productThumbs[i].classList.add('hide');
+        } else {
+          productThumbs[i].classList.remove('hide');
+        }
+      }
+    }
 
     var original_selectCallback = window.selectCallback;
     var selectCallback = function(variant, selector) {

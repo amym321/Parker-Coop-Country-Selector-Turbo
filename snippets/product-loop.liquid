@@ -29,22 +29,24 @@
   }
 </script>
 
-          <script type="text/javascript">
-              console.log('log 40) test');
-          </script>
-
 {% for product in products limit: limit %}
   {% if product.id == skip_product.id  %}
     {% assign forLimit = limit | plus: 1 %}
   {% endif %}
 {% endfor %}
 
-<div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} clearfix equal-columns--clear equal-columns--outside-trim">
+<div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} clearfix equal-columns--clear equal-columns--outside-trim collection-show-hide">
   {% for product in products limit: limit %}
-      {% comment %} hide certain products when outside UK - am {% endcomment %}
-      {% unless product.tags contains 'show_uk_only' and localization.country.iso_code != "GB"%}
-        {% include 'product-thumbnail', sidebar: sidebar %}
-      {% endunless %}
+    {% comment %} show/hide certain products based on currency - am {% endcomment %}
+    {% assign show-hide = "show" %}
+    {% if product.tags contains 'hide_uk' %}
+      {% assign show-hide = "hide-uk" %}
+    {% endif %}
+    {% if product.tags contains 'show_uk_only' %}
+      {% assign show-hide = "show-uk-only" %}
+    {% endif %}
+
+    {% include 'product-thumbnail', sidebar: sidebar, show-hide: show-hide %}
   {% endfor %}
   {% if template contains 'collection' %}
     {% if settings.pagination_type == 'load_more' or settings.pagination_type == 'infinite_scroll' %}
