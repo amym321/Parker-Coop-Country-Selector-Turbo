@@ -41,6 +41,7 @@
           </ul>
         </div>
       </div>
+      {% comment %} en, fr, de, es, it {% endcomment %}
       <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
     </div>
   {%- endform -%}
@@ -98,4 +99,15 @@
   customElements.define('localization-form', LocalizationForm);
 </script>
 
-{% comment %} styles are stated on languages-switcher-mobile file {% endcomment %}
+
+<style>
+  .localization-form,
+  localization-form {
+    cursor: pointer;
+  }
+  .localization-form language:hover {
+    color: #9d8661;
+  }
+
+</style>
+{% comment %} additional styles are stated on languages-switcher-mobile file {% endcomment %}

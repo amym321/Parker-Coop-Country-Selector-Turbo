@@ -1,95 +1,127 @@
 {% comment %} currencies switcher for specific coutries - am {% endcomment %}
   <select class="currencies" name="currencies" data-default-shop-currency="{{ shop.currency }}" data-currency-converter>
 
-    {% capture codes %},AUT,BEL,BGR,HRV,CYP,CZE,DNK,EST,FIN,FRA,DEU,GRC,HUN,IRE,ITA,LVA,LTU,LUX,MLT,NLD,NOR,POL,PRT,ROU,SVK,SVN,ESP,SWE,{% endcapture %}
+    {% capture codes %}AUT,BEL,BGR,HRV,CYP,CZE,DNK,EST,FIN,FRA,DEU,GRC,HUN,IRE,ITA,LVA,LTU,LUX,MLT,NLD,NOR,POL,PRT,ROU,SVK,SVN,ESP,SWE,{% endcapture %}
     {% assign supported_codes = 'AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRE ITA LVA LTU LUX MLT NLD NOR POL PRT ROU SVK SVN ESP SWE' | split: ' ' %}
 
     <option value="{{ shop.currency }}" selected="selected"><b>United Kingdom ({{ shop.currency }} £)</b></option>
     {% for code in supported_codes %}
 
     {% comment %} option titles more detailed than just currency code - am {% endcomment %}
-      {% if code contains 'AUT' %}
+      {% if code contains 'GB' %}
+        {% assign country_name = 'United Kingdom (GBP £)' %}
+        {% assign country_currency = 'GBP' %}
+        {% assign country_code = 'GB' %}
+      {% elsif code contains 'AUT' %}
+        {% assign country_code = 'AUT' %}
         {% assign country_name = 'Austria (EUR 	€)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'BEL' %}
+        {% assign country_code = 'BEL' %}
         {% assign country_name = 'Belgium (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'BGR' %}
+        {% assign country_code = 'BGR' %}
         {% assign country_name = 'Bulgaria (BGN лв.)' %}
         {% assign country_currency = 'BGN' %}
       {% elsif code contains 'HRV' %}
+        {% assign country_code = 'HRV' %}
         {% assign country_name = 'Croatia (HRK kn.)' %}
         {% assign country_currency = 'HRK' %}
       {% elsif code contains 'CYP' %}
+        {% assign country_code = 'CYP' %}
         {% assign country_name = 'Cyprus (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {%  elsif code contains 'CZE'  %}
+        {% assign country_code = 'CZE' %}
         {% assign country_name = 'Czech Republic (CZK Kč)' %}
         {% assign country_currency = 'CZK' %}
       {% elsif code contains 'DNK' %}
+        {% assign country_code = 'DNK' %}
         {% assign country_name = 'Denmark (DKK kr.)' %}
         {% assign country_currency = 'DKK' %}
       {% elsif code contains 'EST' %}
+        {% assign country_code = 'EST' %}
         {% assign country_name = 'Estonia (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'FIN' %}
+        {% assign country_code = 'FIN' %}
         {% assign country_name = 'Finland (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'FRA' %}
+        {% assign country_code = 'FRA' %}
         {% assign country_name = 'France (EUR	€)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'DEU' %}
+        {% assign country_code = 'DEU' %}
         {% assign country_name = 'Germany (EUR	€)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'GRC' %}
+        {% assign country_code = 'GRC' %}
         {% assign country_name = 'Greece (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'HUN' %}
+        {% assign country_code = 'HUN' %}
         {% assign country_name = 'Hungary (HUF Ft.)' %}
         {% assign country_currency = 'HUF' %}
       {% elsif code contains 'IRE' %}
+        {% assign country_code = 'IRE' %}
         {% assign country_name = 'Ireland (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'ITA' %}
+        {% assign country_code = 'ITA' %}
         {% assign country_name = 'Italy (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'LVA' %}
+        {% assign country_code = 'LVA' %}
         {% assign country_name = 'Latvia (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'LTU' %}
+        {% assign country_code = 'LTU' %}
         {% assign country_name = 'Lithuania (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'LUX' %}
+        {% assign country_code = 'LUX' %}
         {% assign country_name = 'Luxembourg (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'MLT' %}
+        {% assign country_code = 'MLT' %}
         {% assign country_name = 'Malta (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'NLD' %}
+        {% assign country_code = 'NLD' %}
         {% assign country_name = 'Netherlands (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'NOR' %}
+        {% assign country_code = 'NOR' %}
         {% assign country_name = 'Norway (NOK	kr.)' %}
         {% assign country_currency = 'NOK' %}
       {% elsif code contains 'POL' %}
+        {% assign country_code = 'POL' %}
         {% assign country_name = 'Poland (PLN zł.)' %}
         {% assign country_currency = 'PLN' %}
       {% elsif code contains 'PRT' %}
+        {% assign country_code = 'PRT' %}
         {% assign country_name = 'Portugal (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'ROU' %}
+        {% assign country_code = 'ROU' %}
         {% assign country_name = 'Romania (RON lei)' %}
         {% assign country_currency = 'RON' %}
       {% elsif code contains 'SVK' %}
+        {% assign country_code = 'SVK' %}
         {% assign country_name = 'Slovakia (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'SVN' %}
+        {% assign country_code = 'SVN' %}
         {% assign country_name = 'Slovenia (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% elsif code contains 'ESP' %}
+        {% assign country_code = 'ESP' %}
         {% assign country_name = 'Spain (EUR €)' %}
         {% assign country_currency = 'EUR' %}
       {% else code contains 'SWE' %}
+        {% assign country_code = 'SWE' %}
         {% assign country_name = 'Sweden (SEK kr.)' %}
         {% assign country_currency = 'SEK' %}
       {% endif %}
@@ -115,6 +147,7 @@ select.currencies option {
 @media only screen and (max-width: 798px) {
   select.currencies {
     font-size: 13px;
+    padding-top: 8px;
   }
 }
 </style>
